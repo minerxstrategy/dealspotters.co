@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{1t}</title>
+    <style  type="text/css">
+    {style}
+    {invisible}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">{domain}</div>
+                <ul class="nav-links">
+                    <li><a href="#beneficios" name="2c">{21t}</a></li>
+                    <li><a href="#ingredientes" name="5c">{22t}</a></li>
+                    <li><a href="#como-funciona" name="4c">{23t}</a></li>
+                    <li><a href="#resultados" name="11c">{24t}</a></li>
+                    <li><a href="#onde-comprar" >{25t}</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>{1t}</h1>
+            <p>{1c}</p>
+            <div><image src="{image}" alt="Prodentim" style="width: 450px;" class="hero-image"></image></div>
+            <div style="text-align: left;"><time>{26t}</time></div>
+        </div>
+    </section>
+
+    <section id="beneficios" name="2c">
+        <div class="container">
+            <h2>{2t}</h2>
+            <ul class="benefits-list" id="benefits-list">
+                <!-- <li>Aumenta os níveis de mitocôndrias</li>
+                <li>Promove a queima de calorias</li>
+                <li>Aumenta a energia</li>
+                <li>Reduz o estresse</li>
+                <li>Melhora o humor</li> -->
+            </ul>
+        </div>
+    </section>
+
+    <section id="3c">
+        <div class="container">
+            <h2>{3t}</h2>
+            <p>{3c}</p>
+        </div>
+    </section>
+
+    <section id="como-funciona" id="4c">
+        <div class="container">
+            <h2>{4t}</h2>
+            <p>{4c}</p>
+        </div>
+    </section>
+
+    <section id="ingredientes" name="5c">
+        <div class="container">
+            <h2>{5t}</h2>
+            <div class="ingredient-grid" id="ingredient-list">
+            </div>
+        </div>
+    </section>
+
+    <section id="base-cientifica" name="6c">
+        <div class="container">
+            <h2>{6t}</h2>
+            <p>{6c}</p>
+            <div class="references" name="6c2">
+                <h3>{6t2}</h3>
+                <ul id="references">
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="mecanismo-acao" name="7c">
+        <div class="container">
+            <h2>{7t}</h2>
+            <p>{7c}</p>
+        </div>
+    </section>
+
+    <section id="processo-uso" name="8c">
+        <div class="container">
+            <h2>{8t}</h2>
+            <p>{8c}</p>
+        </div>
+    </section>
+
+    <section id="tempo-resultados">
+        <div class="container">
+            <h2>{10t}</h2>
+            <p>{10c}</p>
+        </div>
+    </section>
+
+    <section id="problemas-resolve" name="9c">
+        <div class="container">
+            <h2>{9t}</h2>
+            <p>{9c}</p>
+        </div>
+    </section>
+
+    <section id="resultados" name="10c">
+        <div class="container">
+            <h2>{12t}</h2>
+            <div class="testimonial-grid" id="testimonial-list">
+               
+            </div>
+        </div>
+    </section>
+
+    <section class="veredict">
+        <div class="container">
+            <h2>{13t}</h2>
+            <p>{14t}</p>
+            <p class="approved">{29t}</p>
+        </div>
+    </section>
+
+    <section id="onde-comprar">
+        <div class="container" style="text-align: center;">
+            <h2>{15t}</h2>
+            <p>{16t}</p>
+            <p>{17t}</p>
+            <a href="https://us-prodintim.com/" class="cta-button" >{18t}</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© {year} {domain}. {19t}</p>
+            <p class="disclaimer">{20t}</p>
+        </div>
+    </footer>
+</body>
+<script>
+    const initBenefits = () => {
+        const benefits = {benefits};
+        for (let index = 0; index < benefits.length; index++) {
+        const element = benefits[index];
+        const blist = document.getElementById('benefits-list');
+        blist.innerHTML += `<li>${element}</li>`;
+        }
+    }
+    const initReferences = () => {
+        const references = {references};
+        for (let index = 0; index < references.length; index++) {
+        const element = references[index];
+        const blist = document.getElementById('references');
+        blist.innerHTML += `<li><a href="${element}" target="_blank">${element}</a></li>`;
+        }
+    }
+
+    const initIngredients = () => {
+    const ingredients = {ingredients};
+    for (let index = 0; index < ingredients.length; index++) {
+      const element = ingredients[index];
+      const blist = document.getElementById('ingredient-list');
+      blist.innerHTML += `<div class="ingredient-card">
+        <h3>${element.name}</h3>
+        <ul>
+          ${element.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+        </ul>
+      </div>`;
+    }};
+
+    const initTestimonials = () => {
+        const testimonialList = {testimonials};
+        for (let index = 0; index < testimonialList.length; index++) {
+        const element = testimonialList[index];
+        const blist = document.getElementById('testimonial-list');
+        blist.innerHTML += `<div class="testimonial-card">
+            <p>"${element.history}"</p>
+            <div class="testimonial-name">${element.name}</div>
+        </div>`;
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        initBenefits();
+        initReferences();
+        initIngredients();
+        initTestimonials();
+    });
+
+//<li><a href="https://pubmed.ncbi.nlm.nih.gov/27367031/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/27367031/</a></li>
+
+</script>
+</html>
