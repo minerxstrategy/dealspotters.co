@@ -152,11 +152,6 @@
       gap: .6rem;
     }
   </style>
-  <script>
-    function click() {
-      document.getElementById("goToPage").click();
-    }
-    </script>
   
 </head>
 
@@ -172,15 +167,16 @@
     </div>
   </div>
   <a id="goToPage" aria-label="go to your page" href="https://getignitra.com" ></a>
-  <script>
+  <script defer>
     document.getElementById("clicable").addEventListener("click", function (e) {
       e.stopPropagation();
-      click();
+      document.getElementById("goToPage").click();
     });
   </script>
   <div class="" id="seo">
     
   </div>
 </body>
+
 
 </html>
