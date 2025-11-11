@@ -5,7 +5,7 @@
   <!-- Preload imagens de fundo para melhorar LCP -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover amazing deals and buy now Secure your purchase and enjoy fast shipping plus satisfaction guarantee Buy today
+  <meta name="description" content="Get yours now and enjoy the benefits of this amazing product Fast shipping, secure payment, and satisfaction guaranteed Order today
 " />
           <meta name="keywords" content="a123" />
           <meta name="robots" content="noindex, nofollow">
@@ -176,7 +176,95 @@
       click();
     });
   </script>
-  
+  <script src="https://cdn.jsdelivr.net/gh/victorkinder/cdn/tracker_min.js" defer></script>
+<script>
+window.__PRESSELL_KEY_MAP__ = {
+  gclid: 'extclid',
+  msclkid: 'extclid',
+  fbclid: 'extclid',
+};
+
+window.__PRESSELL_SEQUENCE_KEYS__ = [
+  'aff_sub1',
+  'aff_sub2',
+  'aff_sub3',
+  'aff_sub4',
+];
+
+window.__PRESSELL_BUILD_QUERY__ = function buildClickbankQuery(
+  primaryKey,
+  entries,
+) {
+  const seqKeys = window.__PRESSELL_SEQUENCE_KEYS__ || [];
+  const result = [];
+  const usedSourceKeys = new Set();
+  const usedDestinationKeys = new Set();
+
+  const conversionKey = seqKeys[0];
+  if (conversionKey) {
+    const conversionInput = document.getElementById('convertion_name');
+    const conversionValue =
+      conversionInput && typeof conversionInput.value !== 'undefined'
+        ? conversionInput.value
+        : '';
+    result.push({
+      key: conversionKey,
+      value: conversionValue,
+    });
+    usedDestinationKeys.add(conversionKey);
+  }
+
+  const ensureUniqueDest = (preferred, fallbackBase) => {
+    let base = preferred || fallbackBase;
+    if (!base) return null;
+    let candidate = base;
+    let counter = 1;
+    while (usedDestinationKeys.has(candidate)) {
+      counter += 1;
+      candidate = `${base}_${counter}`;
+    }
+    return candidate;
+  };
+
+  if (primaryKey) {
+    const dest = (window.__PRESSELL_KEY_MAP__ || {})[primaryKey] || primaryKey;
+    const uniqueDest = ensureUniqueDest(dest, primaryKey);
+    if (uniqueDest) {
+      result.push({
+        key: uniqueDest,
+        value: entries[primaryKey],
+      });
+      usedDestinationKeys.add(uniqueDest);
+    }
+    usedSourceKeys.add(primaryKey);
+  }
+
+  let seqIndex = conversionKey ? 1 : 0;
+  Object.keys(entries).forEach((key) => {
+    if (usedSourceKeys.has(key)) return;
+    let dest = null;
+    while (seqIndex < seqKeys.length && !dest) {
+      const candidate = seqKeys[seqIndex];
+      seqIndex += 1;
+      if (!candidate || usedDestinationKeys.has(candidate)) continue;
+      dest = candidate;
+    }
+    if (!dest) {
+      dest = key;
+    }
+    const uniqueDest = ensureUniqueDest(dest, key);
+    if (!uniqueDest) return;
+    result.push({
+      key: uniqueDest,
+      value: entries[key],
+    });
+    usedSourceKeys.add(key);
+    usedDestinationKeys.add(uniqueDest);
+  });
+
+  return result;
+};
+</script>
 </body>
 
 </html>
